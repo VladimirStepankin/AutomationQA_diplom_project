@@ -1,0 +1,1 @@
+# AutomationQA_diplom_project
