@@ -1,7 +1,5 @@
 import time
-
 import allure
-from selenium.webdriver import ActionChains
 
 from locators.cart_page_locators import CartPageLocators
 from locators.login_page_locators import LoginPageLocators
@@ -41,21 +39,21 @@ class CartPage(BasePage):
     def check_plus_button(self):
         self.element_is_present(self.locators.PLUS_BUTTON).click()
         time.sleep(0.1)
-        text = self.element_is_present(self.locators.QUANTITY_FIELD).text
-        return text
+        value = self.element_is_clickable(self.locators.QUANTITY_FIELD).get_attribute("value")
+        return value
 
     @allure.step('click minus button')
     def check_minus_button(self):
         self.element_is_present(self.locators.PLUS_BUTTON).click()
         time.sleep(0.1)
-        self.element_is_present(self.locators.MINUS_BUTTON).click()
+        self.element_is_clickable(self.locators.MINUS_BUTTON).click()
         time.sleep(0.1)
-        value = self.element_is_present(self.locators.QUANTITY_FIELD).get_attribute("value")
+        value = self.element_is_clickable(self.locators.QUANTITY_FIELD).get_attribute("value")
         return value
 
     @allure.step('click remove button')
     def check_remove_button(self):
         self.element_is_present(self.locators.REMOVE_BUTTON).click()
         time.sleep(0.1)
-        text = self.element_is_present(self.locators.EMPTY_CART_MESSAGE).text
+        text = self.element_is_visible(self.locators.EMPTY_CART_MESSAGE).text
         return text

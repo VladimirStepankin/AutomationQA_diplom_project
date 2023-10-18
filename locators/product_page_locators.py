@@ -7,6 +7,7 @@ class ProductPageLocators:
     PRODUCT_PRICE = (By.XPATH, '//*[@id="update_price"]')
     PLUS_BUTTON = (By.XPATH, '//*[@id="superplus"]')
     MINUS_BUTTON = (By.XPATH, '//*[@id="superminus"]')
-    WISHLIST_BUTTON = (By.XPATH, '//*[@id="content"]/div/div/div[2]/div[4]/div[2]/button[1]')
+    QUANTITY_FIELD = (By.CSS_SELECTOR, '#content > div > div > div.col-sm-6.product-right > div.cart > div.number > input.plus-minus')
+    WISHLIST_BUTTON = (By.CSS_SELECTOR, '#content > div > div > div.col-sm-6.product-right > div.cart > div.btn-group > button:nth-child(1)')
     WISHLIST_SUCCESS = (By.XPATH, '//*[@id="partcont"]')
     TEST_BUTTON = (By.XPATH, '//*[@id="partcont"]/div/div[3]/a')

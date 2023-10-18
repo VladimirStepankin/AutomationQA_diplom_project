@@ -1,7 +1,5 @@
 import time
-
 import allure
-from selenium.webdriver import ActionChains
 
 from locators.login_page_locators import LoginPageLocators
 from locators.product_page_locators import ProductPageLocators
@@ -22,22 +20,20 @@ class ProductPage(BasePage):
     def check_plus_button(self):
         self.element_is_present(self.locators.PLUS_BUTTON).click()
         time.sleep(0.1)
-        text = self.element_is_present(self.locators.PRODUCT_PRICE).text
-        return text
+        value = self.element_is_clickable(self.locators.QUANTITY_FIELD).get_attribute("value")
+        return value
 
     @allure.step('click minus button')
     def check_minus_button(self):
         self.element_is_present(self.locators.PLUS_BUTTON).click()
         time.sleep(0.1)
-        self.element_is_present(self.locators.MINUS_BUTTON).click()
+        self.element_is_clickable(self.locators.MINUS_BUTTON).click()
         time.sleep(0.1)
-        text = self.element_is_present(self.locators.PRODUCT_PRICE).text
-        return text
+        value = self.element_is_clickable(self.locators.QUANTITY_FIELD).get_attribute("value")
+        return value
 
     @allure.step('authorization')
-    def authorization(self):
-        email = 'vladimirstepankin@mail.ru'
-        password = 'Qwerty1234'
+    def authorization(self, email, password):
         with allure.step('filling fields'):
             self.element_is_visible(self.locators_authorized.EMAIL).send_keys(email)
             self.element_is_visible(self.locators_authorized.PASSWORD).send_keys(password)
