@@ -9,3 +9,4 @@ class ProductPageLocators:
     MINUS_BUTTON = (By.XPATH, '//*[@id="superminus"]')
     WISHLIST_BUTTON = (By.XPATH, '//*[@id="content"]/div/div/div[2]/div[4]/div[2]/button[1]')
     WISHLIST_SUCCESS = (By.XPATH, '//*[@id="partcont"]')
+    TEST_BUTTON = (By.XPATH, '//*[@id="partcont"]/div/div[3]/a')
