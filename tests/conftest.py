@@ -9,6 +9,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 @pytest.fixture()
 def driver():
+    """Запуск драйвера для открытия браузера"""
+
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
     service = Service(executable_path=ChromeDriverManager().install())
