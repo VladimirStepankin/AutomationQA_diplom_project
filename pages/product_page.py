@@ -7,23 +7,24 @@ from pages.base_page import BasePage
 
 
 class ProductPage(BasePage):
+    """Страница товара"""
     locators = ProductPageLocators()
     locators_authorized = LoginPageLocators()
 
-    @allure.step('click cart button')
+    @allure.step('добавить товар в корзину')
     def check_cart_button(self):
         self.element_is_present(self.locators.CART_BUTTON).click()
         text_title = self.element_is_present(self.locators.SUCCESS_MESSAGE).text
         return text_title
 
-    @allure.step('click plus button')
+    @allure.step('кликнуть на кнопку "+"')
     def check_plus_button(self):
         self.element_is_present(self.locators.PLUS_BUTTON).click()
         time.sleep(0.1)
         value = self.element_is_clickable(self.locators.QUANTITY_FIELD).get_attribute("value")
         return value
 
-    @allure.step('click minus button')
+    @allure.step('кликнуть на кнопку "-"')
     def check_minus_button(self):
         self.element_is_present(self.locators.PLUS_BUTTON).click()
         time.sleep(0.1)
@@ -32,7 +33,7 @@ class ProductPage(BasePage):
         value = self.element_is_clickable(self.locators.QUANTITY_FIELD).get_attribute("value")
         return value
 
-    @allure.step('authorization')
+    @allure.step('авторизоваться')
     def authorization(self, email, password):
         with allure.step('filling fields'):
             self.element_is_visible(self.locators_authorized.EMAIL).send_keys(email)
@@ -40,7 +41,7 @@ class ProductPage(BasePage):
         with allure.step('click submit button'):
             self.element_is_visible(self.locators_authorized.SUBMIT).click()
 
-    @allure.step('click wishlist button')
+    @allure.step('добавить товар в закладки')
     def check_wishlist_button(self):
         self.element_is_present(self.locators.WISHLIST_BUTTON).click()
         text = self.element_is_visible(self.locators.WISHLIST_SUCCESS)

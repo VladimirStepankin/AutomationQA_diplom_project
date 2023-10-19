@@ -8,41 +8,42 @@ from pages.base_page import BasePage
 
 
 class CartPage(BasePage):
+    """Страница корзины"""
     locators = CartPageLocators()
     locators_authorized = LoginPageLocators()
     locators_product = ProductPageLocators()
 
-    @allure.step('authorization')
+    @allure.step('авторизоваться')
     def authorization(self, email, password):
-        with allure.step('filling fields'):
+        with allure.step('заполнение полей'):
             self.element_is_visible(self.locators_authorized.EMAIL).send_keys(email)
             self.element_is_visible(self.locators_authorized.PASSWORD).send_keys(password)
-        with allure.step('click submit button'):
+        with allure.step('клик на кнопку "Войти"'):
             self.element_is_visible(self.locators_authorized.SUBMIT).click()
 
-    @allure.step('put product in cart')
+    @allure.step('положить товар в корзину')
     def put_product_in_cart(self):
         self.element_is_present(self.locators_product.CART_BUTTON).click()
         self.element_is_visible(self.locators_product.TEST_BUTTON).click()
 
-    @allure.step('check product name')
+    @allure.step('проверить наименование товара')
     def check_product_name(self):
         text = self.element_is_visible(self.locators.PRODUCT_NAME).text
         return text
 
-    @allure.step('check product model')
+    @allure.step('проверить модель товара')
     def check_product_model(self):
         text = self.element_is_visible(self.locators.MODEL).text
         return text
 
-    @allure.step('click plus button')
+    @allure.step('кликнуть на кнопку "+"')
     def check_plus_button(self):
         self.element_is_present(self.locators.PLUS_BUTTON).click()
         time.sleep(0.1)
         value = self.element_is_clickable(self.locators.QUANTITY_FIELD).get_attribute("value")
         return value
 
-    @allure.step('click minus button')
+    @allure.step('кликнуть на кнопку "-"')
     def check_minus_button(self):
         self.element_is_present(self.locators.PLUS_BUTTON).click()
         time.sleep(0.1)
@@ -51,7 +52,7 @@ class CartPage(BasePage):
         value = self.element_is_clickable(self.locators.QUANTITY_FIELD).get_attribute("value")
         return value
 
-    @allure.step('click remove button')
+    @allure.step('кликнуть на кнопку "удалить"')
     def check_remove_button(self):
         self.element_is_present(self.locators.REMOVE_BUTTON).click()
         time.sleep(0.1)
