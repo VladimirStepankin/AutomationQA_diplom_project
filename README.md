@@ -11,6 +11,7 @@ ____
 <p align="left">
 <a href="https://www.python.org/"><img src="images/logo/Python.png" width="45" height="45"  alt="Python"/></a> 
 <a href="https://www.jetbrains.com/pycharm/"><img src="images/logo/pycharm.svg" width="42" height="42"  alt="Pycharm"/></a> 
+<a href="https://github.com/pytest-dev/pytest"><img src="images/logo/pytest_logo.svg" width="52" height="44"  alt="Pytest"/></a> 
 <a href="https://www.selenium.dev/"><img src="images/logo/selenium-original.svg" width="42" height="42"  alt="Selenium"/></a>
 <a href="https://github.com/allure-framework"><img src="images/logo/Allure.png" width="45" height="45"  alt="Allure"/></a>
 <a href="https://github.com/"><img src="images/logo/github.svg" width="42" height="42"  alt="Github"/></a>  
