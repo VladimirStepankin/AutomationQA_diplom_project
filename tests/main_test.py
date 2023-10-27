@@ -1,4 +1,5 @@
 import allure
+import yaml
 
 from pages.main_page import MainPage
 
@@ -6,8 +7,10 @@ from pages.main_page import MainPage
 @allure.feature('Главная страница')
 class TestMainPage:
     """Тесты главной страницы"""
+    with open("./config.yaml") as f:
+        data = yaml.safe_load(f)
 
-    url = 'https://goaqua.ru/'
+    url = data["url"]
 
     @allure.title('Проверка заголовка')
     def test_main_page(self, driver):

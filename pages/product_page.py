@@ -35,10 +35,10 @@ class ProductPage(BasePage):
 
     @allure.step('авторизоваться')
     def authorization(self, email, password):
-        with allure.step('filling fields'):
+        with allure.step('заполнение полей'):
             self.element_is_visible(self.locators_authorized.EMAIL).send_keys(email)
             self.element_is_visible(self.locators_authorized.PASSWORD).send_keys(password)
-        with allure.step('click submit button'):
+        with allure.step('клик на кнопку "Войти"'):
             self.element_is_visible(self.locators_authorized.SUBMIT).click()
 
     @allure.step('добавить товар в закладки')

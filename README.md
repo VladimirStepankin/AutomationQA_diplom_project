@@ -57,25 +57,23 @@ ___
 ### *Основная страница отчёта*
 
 <p align="center">  
-<img title="Allure Overview Dashboard" src="скрин" width="850">  
+<img title="Allure Overview Dashboard" src="images/screenshots/allure_report.png" width="850">  
 </p>  
 
 ### *Тест-кейсы*
 
 <p align="center">  
-<img title="Allure Tests" src="скрин2" width="850">  
+<img title="Allure Tests" src="images/screenshots/allure_suits.png" width="850">  
 </p>
 
 ### *Графики*
 
   <p align="center">  
-<img title="Allure Graphics" src="граф1" width="850">  
-<img title="Allure Graphics" src="граф2" width="850">  
+<img title="Allure Graphics" src="images/screenshots/allure_graphs.png" width="850">  
 </p>
 
 ### <a name="Ссылки на документацию и отчеты:">**Ссылки на документацию и отчеты:**</a>
 
 [План автоматизации тестирования](test-documentation/Plan.md)\
-[Отчет о проведенном тестировании](test-documentation/Report.md)\
-[Отчет о проведенной автоматизации](test-documentation/Summary.md)
+[Отчет о проведенном тестировании](test-documentation/Report.md)
 

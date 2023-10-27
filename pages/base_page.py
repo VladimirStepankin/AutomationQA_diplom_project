@@ -22,17 +22,9 @@ class BasePage:
         self.go_to_element(self.element_is_present(locator))
         return wait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
 
-    @allure.step('Find visible elements')
-    def elements_are_visible(self, locator, timeout=5):
-        return wait(self.driver, timeout).until(EC.visibility_of_all_elements_located(locator))
-
     @allure.step('Find a present element')
     def element_is_present(self, locator, timeout=5):
         return wait(self.driver, timeout).until(EC.presence_of_element_located(locator))
-
-    @allure.step('Find present elements')
-    def elements_are_present(self, locator, timeout=5):
-        return wait(self.driver, timeout).until(EC.presence_of_all_elements_located(locator))
 
     @allure.step('Find clickable elements')
     def element_is_clickable(self, locator, timeout=5):
@@ -41,10 +33,3 @@ class BasePage:
     @allure.step('Go to specified element')
     def go_to_element(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
-
-    @allure.step('Move cursor to element')
-    def action_move_to_element(self, element):
-        action = ActionChains(self.driver)
-        action.move_to_element(element)
-        action.perform()
-
