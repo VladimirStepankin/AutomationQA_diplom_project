@@ -1,4 +1,5 @@
 import allure
+import yaml
 
 from pages.product_page import ProductPage
 
@@ -6,11 +7,14 @@ from pages.product_page import ProductPage
 @allure.feature('Страница товара')
 class TestProductPage:
     """Тесты страницы товара"""
+    with open("./config.yaml") as f:
+        data = yaml.safe_load(f)
 
-    email = 'vladimirstepankin@mail.ru'
-    password = 'Qwerty1234'
-    url_prod = 'https://goaqua.ru/osveshchenie/svetodiodnye-svetilniki/chihiros-wrgb-ii-pro-series/svetilnik-chihiros-wrgb-ii-pro-120.html'
-    url_login = 'https://goaqua.ru/login/'
+    email = data["email"]
+    password = data["password"]
+    url_auth = data["url_login"]
+    url_prod = data["url_product"]
+
 
     @allure.title('Проверка заголовка')
     def test_product_page(self, driver):
@@ -31,7 +35,7 @@ class TestProductPage:
         product_page = ProductPage(driver, self.url_prod)
         product_page.open()
         value = product_page.check_minus_button()
-        assert value == '1', "Pinus button is faulty"
+        assert value == '1', "Minus button is faulty"
 
     @allure.title('Проверка увеличения количества товара')
     def test_plus_button(self, driver):
@@ -42,7 +46,7 @@ class TestProductPage:
 
     @allure.title('Проверка добавления товара в закладки')
     def test_wishlist_button(self, driver):
-        product_page = ProductPage(driver, self.url_login)
+        product_page = ProductPage(driver, self.url_auth)
         product_page.open()
         product_page.authorization(self.email, self.password)
         driver.get(self.url_prod)

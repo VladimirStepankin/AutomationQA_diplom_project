@@ -1,4 +1,5 @@
 import allure
+import yaml
 
 from pages.cart_page import CartPage
 
@@ -6,12 +7,14 @@ from pages.cart_page import CartPage
 @allure.feature('Страница корзины')
 class TestCartPage:
     """Тесты страницы корзины"""
+    with open("./config.yaml") as f:
+        data = yaml.safe_load(f)
 
-    email = 'vladimirstepankin@mail.ru'
-    password = 'Qwerty1234'
-    url_cart = 'https://goaqua.ru/simplecheckout/'
-    url_auth = 'https://goaqua.ru/login/'
-    url_prod = 'https://goaqua.ru/osveshchenie/svetodiodnye-svetilniki/chihiros-wrgb-ii-pro-series/svetilnik-chihiros-wrgb-ii-pro-120.html'
+    email = data["email"]
+    password = data["password"]
+    url_cart = data["url_cart"]
+    url_auth = data["url_login"]
+    url_prod = data["url_product"]
 
     @allure.title('Проверка заголовка')
     def test_cart_page(self, driver):
@@ -20,7 +23,7 @@ class TestCartPage:
         title = cart_page.get_title()
         assert title == 'Оформление заказа', "Page not found"
 
-    @allure.step('Проверка наименования товара')
+    @allure.title('Проверка наименования товара')
     def test_product_name(self, driver, ):
         cart_page = CartPage(driver, self.url_auth)
         cart_page.open()
@@ -30,7 +33,7 @@ class TestCartPage:
         name = cart_page.check_product_name()
         assert name == 'Светильник Chihiros WRGB II PRO 120', "Wrong product name"
 
-    @allure.step('Проверка модели товара')
+    @allure.title('Проверка модели товара')
     def test_product_model(self, driver, ):
         cart_page = CartPage(driver, self.url_auth)
         cart_page.open()

@@ -1,4 +1,5 @@
 import allure
+import yaml
 
 from pages.login_page import LoginPage
 
@@ -6,12 +7,14 @@ from pages.login_page import LoginPage
 @allure.feature('Страница авторизации')
 class TestLoginPage:
     """Тесты для страницы авторизации"""
+    with open("./config.yaml") as f:
+        data = yaml.safe_load(f)
 
-    email = 'vladimirstepankin@mail.ru'
-    password = 'Qwerty1234'
-    wr_email = 'vladimirstepankin@mail.'
-    wr_password = '123'
-    url_login = 'https://goaqua.ru/login/'
+    email = data["email"]
+    password = data["password"]
+    wr_email = data["incorrect_email"]
+    wr_password = data["incorrect_password"]
+    url_login = data["url_login"]
 
     @allure.title('Проверка заголовка')
     def test_login_page(self, driver):
